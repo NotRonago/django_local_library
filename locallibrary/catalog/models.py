@@ -37,12 +37,18 @@ class Book(models.Model):
     summary = models.TextField(max_length= 1000, help_text= 'Enter a brief description of the book')
     isbn = models.CharField('ISBN', max_length= 13, help_text= '13 Character <a href="https://www.isbn-international.org/content/what-isbn''">ISBN number</a>')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null= True)
 
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse('book-detail', args=[str(self.id)])
+    
+    def display_genre(self):
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    
+    display_genre.short_description = 'genre'
     
 class BookInstace(models.Model):
     id = models.UUIDField(primary_key=True, default= uuid.uuid4, help_text= 'Unique ID for this particular book across whole library')
