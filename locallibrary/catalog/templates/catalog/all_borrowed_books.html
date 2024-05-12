@@ -1,0 +1,14 @@
+{% extends "./base_generic.html" %}
+
+{% block content %}
+   <h1 style="margin-bottom: 25px;">All Borrowed Books</h1>
+    {% if perms.catalog.can_mark_returned %}
+        <ul>
+            {% for book in bookinstace_list %}
+                <li class="{% if book.is_overdue %}text-danger{% endif %}"><a href="{% url 'book-detail' book.book.pk %}">{{ book.book }}</a> ({{ book.due_back }}) - {{ book.borrower }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You don't have permission to see this section</p>
+    {% endif %}
+{% endblock %}
