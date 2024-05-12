@@ -13,5 +13,11 @@
     <li><strong>Copies:</strong> {{ num_instance }}</li>
     <li><strong>Copies available:</strong> {{ num_status }}</li>
     <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Genres:</strong> {{ num_genres }}</li>
+    <li><strong>Filtered by "teke":</strong> {{ num_filtered_books }}</li>
   </ul>
+
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
 {% endblock %}
