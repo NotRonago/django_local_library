@@ -18,23 +18,23 @@ class AuthorAdmin(admin.ModelAdmin):
 # @admin.register(BookInstace)
 class BookInstaceAdmin(admin.TabularInline):
     model = BookInstace
-    list_display = ['book', 'status', 'due_back', 'id']
+    list_display = ['book', 'status', 'due_back', 'borrowe', 'id',]
     list_filter = ['status', 'due_back']
     extra = 0
 
     fieldsets = (
         (None, {'fields': ('book', 'imprint', 'id')}),
-        ('Availability', {'fields': ('status', 'due_back')})
+        ('Availability', {'fields': ('status', 'due_back', 'borrower')})
     )
 
 @admin.register(BookInstace)
 class BookIAdmin(admin.ModelAdmin):
-    list_display = ['book', 'status', 'due_back', 'id']
+    list_display = ['book', 'status', 'due_back', 'borrower', 'id']
     list_filter = ['status', 'due_back']
 
     fieldsets = (
         (None, {'fields': ('book', 'imprint', 'id')}),
-        ('Availability', {'fields': ('status', 'due_back')})
+        ('Availability', {'fields': ('status', 'due_back', 'borrower')})    
     )
 
 @admin.register(Book)
