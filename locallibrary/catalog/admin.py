@@ -18,7 +18,7 @@ class AuthorAdmin(admin.ModelAdmin):
 # @admin.register(BookInstace)
 class BookInstaceAdmin(admin.TabularInline):
     model = BookInstace
-    list_display = ['book', 'status', 'due_back', 'borrowe', 'id',]
+    list_display = ['book', 'status', 'due_back', 'borrower', 'id',]
     list_filter = ['status', 'due_back']
     extra = 0
 

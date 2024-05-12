@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.models import User
 from datetime import date
+from django.contrib.auth.models import PermissionsMixin
 import uuid
 
 # Create your models here.
@@ -82,6 +83,7 @@ class BookInstace(models.Model):
 
     class Meta:
         ordering = ['due_back']
+        permissions = (('can_mark_returned', 'Set book as returned'),)
 
 class Author(models.Model):
     first_name = models.CharField(max_length= 100)
