@@ -5,7 +5,8 @@
     {% if perms.catalog.can_mark_returned %}
         <ul>
             {% for book in bookinstace_list %}
-                <li class="{% if book.is_overdue %}text-danger{% endif %}"><a href="{% url 'book-detail' book.book.pk %}">{{ book.book }}</a> ({{ book.due_back }}) - {{ book.borrower }}</li>
+                <li class="{% if book.is_overdue %}text-danger{% endif %}"><a href="{% url 'book-detail' book.book.pk %}">{{ book.book }}</a> ({{ book.due_back }}) - {{ book.borrower }}- <a href="{% url 'renew-book-librarian' book.id%}">Renew</a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
